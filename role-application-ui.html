@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Application - La Tanda</title>
+    <link rel="stylesheet" href="role-application-ui.css">
+</head>
+<body>
+    <div class="role-container">
+        <!-- Header -->
+        <header class="role-header">
+            <h1>🎯 Role Application System</h1>
+            <p>Elevate your role and unlock new capabilities</p>
+        </header>
+
+        <!-- Role Browser Section -->
+        <section class="role-browser">
+            <h2>📊 Role Hierarchy</h2>
+            <div class="role-levels">
+                <div class="role-card" data-role="user">
+                    <div class="role-level">Level 1</div>
+                    <div class="role-name">👤 User</div>
+                    <div class="role-description">Basic community member</div>
+                    <div class="role-perms">
+                        <span class="perm">View Tandas</span>
+                        <span class="perm">Create Profile</span>
+                    </div>
+                    <button class="view-details" data-role="user">View Details</button>
+                </div>
+
+                <div class="role-card" data-role="verified_user">
+                    <div class="role-level">Level 2</div>
+                    <div class="role-name">✅ Verified User</div>
+                    <div class="role-description">KYC verified member</div>
+                    <div class="role-perms">
+                        <span class="perm">Join Tandas</span>
+                        <span class="perm">Make Payments</span>
+                    </div>
+                    <button class="view-details" data-role="verified_user">View Details</button>
+                </div>
+
+                <div class="role-card" data-role="active_member">
+                    <div class="role-level">Level 3</div>
+                    <div class="role-name">⭐ Active Member</div>
+                    <div class="role-description">Consistent contributor</div>
+                    <div class="role-perms">
+                        <span class="perm">Create Tandas</span>
+                        <span class="perm">Advanced Features</span>
+                    </div>
+                    <button class="view-details" data-role="active_member">View Details</button>
+                </div>
+
+                <div class="role-card" data-role="coordinator">
+                    <div class="role-level">Level 4</div>
+                    <div class="role-name">👨‍💼 Coordinator</div>
+                    <div class="role-description">Tanda group leader</div>
+                    <div class="role-perms">
+                        <span class="perm">Manage Members</span>
+                        <span class="perm">Set Schedules</span>
+                    </div>
+                    <button class="apply-btn" data-role="coordinator">Apply Now</button>
+                </div>
+
+                <div class="role-card" data-role="moderator">
+                    <div class="role-level">Level 5</div>
+                    <div class="role-name">🛡️ Moderator</div>
+                    <div class="role-description">Community guardian</div>
+                    <div class="role-perms">
+                        <span class="perm">Resolve Disputes</span>
+                        <span class="perm">Community Rules</span>
+                    </div>
+                    <button class="apply-btn" data-role="moderator">Apply Now</button>
+                </div>
+
+                <div class="role-card" data-role="ambassador">
+                    <div class="role-level">Level 6</div>
+                    <div class="role-name">🌍 Ambassador</div>
+                    <div class="role-description">Platform representative</div>
+                    <div class="role-perms">
+                        <span class="perm">Marketing Rights</span>
+                        <span class="perm">Community Events</span>
+                    </div>
+                    <button class="apply-btn" data-role="ambassador">Apply Now</button>
+                </div>
+
+                <div class="role-card" data-role="developer">
+                    <div class="role-level">Level 7</div>
+                    <div class="role-name">👨‍💻 Developer</div>
+                    <div class="role-description">Technical contributor</div>
+                    <div class="role-perms">
+                        <span class="perm">API Access</span>
+                        <span class="perm">Build Tools</span>
+                    </div>
+                    <button class="apply-btn" data-role="developer">Apply Now</button>
+                </div>
+
+                <div class="role-card" data-role="super_admin">
+                    <div class="role-level">Level 8</div>
+                    <div class="role-name">👑 Super Admin</div>
+                    <div class="role-description">Platform administrator</div>
+                    <div class="role-perms">
+                        <span class="perm">Full Control</span>
+                        <span class="perm">System Config</span>
+                    </div>
+                    <button class="view-details" data-role="super_admin" disabled>Invite Only</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Form Modal -->
+        <div id="applicationModal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h2 id="roleTitle">Apply for Role</h2>
+
+                <div class="eligibility-check">
+                    <h3>✓ Eligibility Requirements</h3>
+                    <ul id="eligibilityList"></ul>
+                </div>
+
+                <form id="roleApplicationForm">
+                    <div class="form-group">
+                        <label for="motivation">Why do you want this role?</label>
+                        <textarea id="motivation" required placeholder="Explain your motivation..." maxlength="500"></textarea>
+                        <div class="char-count"><span id="charCount">0</span>/500</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Relevant experience</label>
+                        <textarea id="experience" placeholder="Share your background..." maxlength="500"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="references">
+                            <input type="checkbox" id="references">
+                            I can provide community references
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+
+                <div id="applicationStatus" class="hidden">
+                    <h3>✅ Application Submitted!</h3>
+                    <p>Your application has been submitted for review. You'll receive a notification when moderators review it.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Details Modal -->
+        <div id="detailsModal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h2 id="detailsTitle">Role Details</h2>
+                <div id="detailsContent"></div>
+            </div>
+        </div>
+
+        <!-- Application Status Dashboard -->
+        <section class="application-status">
+            <h2>📋 Your Applications</h2>
+            <div id="applicationsList" class="applications-list">
+                <p class="empty-state">No applications yet</p>
+            </div>
+        </section>
+
+        <!-- Notifications -->
+        <div id="notificationContainer" class="notification-container"></div>
+    </div>
+
+    <script src="role-application-ui.js"></script>
+</body>
+</html>
